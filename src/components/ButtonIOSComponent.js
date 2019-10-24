@@ -22,13 +22,14 @@ const estilo = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-    width: 150,
+    width: 200,
   },
   buttonText: {
     color: '#008000',
     textAlign: 'center',
     paddingLeft: 10,
     paddingRight: 10,
+    fontSize: 25,
   },
   viewButton: {
     marginTop: 15,
