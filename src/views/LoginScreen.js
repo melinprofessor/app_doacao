@@ -2,10 +2,8 @@ import React from "react";
 import {
   View,
   Text,
-  TextInput,
   ImageBackground,
   Platform,
-  Linking
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import StyleSheet, { estilos } from "../styles/styles";
