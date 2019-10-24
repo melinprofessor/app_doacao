@@ -32,7 +32,7 @@ const estilo = StyleSheet.create({
     fontSize: 25,
   },
   viewButton: {
-    marginTop: 15,
+    paddingTop: 15,
     alignContent: 'center',
     justifyContent: 'center',
   },
