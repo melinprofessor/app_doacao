@@ -13,3 +13,10 @@ const ConfirmaCadastro = () => (
     </LinearGradient>
 
 );
+
+const estilos = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+})
