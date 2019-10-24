@@ -1,20 +1,16 @@
-import React from "react";
-import {
-  View,
-  Text,
-  ImageBackground,
-  Platform,
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import StyleSheet, { estilos } from "../styles/styles";
-import ButtonAndroidComponent from "../components/ButtonAndroidComponent";
-import ButtonIOSComponent from "../components/ButtonIOSComponent";
-import InputTextComponent from "../components/InputTextComponent";
+import React from 'react';
+import { View, Text, ImageBackground, Platform } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import StyleSheet, { estilos } from '../styles/styles';
+import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
+import ButtonIOSComponent from '../components/ButtonIOSComponent';
+import InputTextComponent from '../components/InputTextComponent';
 
-const loginImg = require("../imgs/loginBackground.png");
+const loginImg = require('../imgs/loginBackground.png');
+
 export function navigationOptions({ navigate }) {
   return {
-    title: "Login",
+    title: 'Login',
     header: null
   };
 }
@@ -26,29 +22,29 @@ const ButtonComponent = Platform.select({
 
 const Login = props => (
   <LinearGradient
-    colors={["#3CB371", "#2E8B57", "#008000", "#228B22"]}
-    style={estilos.container}
+    colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
+    style={ estilos.container }
   >
     <ImageBackground
-      imageStyle={{ opacity: 0.5 }}
-      source={loginImg}
-      style={{ width: "100%", height: "100%" }}
+      imageStyle={ { opacity: 0.5 } }
+      source={ loginImg }
+      style={ { width: '100%', height: '100%' } }
     >
-      <View style={[estilos.container, { justifyContent: "space-around" }]}>
-        <View style={estilo.container}>
-          <View style={estilo.viewTexto}>
-            <Text style={estilo.fonte}>Boa</Text>
-            <Text style={estilo.fonte}>Ação</Text>
+      <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
+        <View style={ estilo.container }>
+          <View style={ estilo.viewTexto }>
+            <Text style={ estilo.fonte }>Boa</Text>
+            <Text style={ estilo.fonte }>Ação</Text>
           </View>
         </View>
-        <View style={estilo.container}>
+        <View style={ estilo.container }>
           <InputTextComponent placeholder="Login" />
           <InputTextComponent placeholder="Senha" />
           <ButtonComponent title="ENTRAR" />
           <ButtonComponent title="CADASTRAR" />
         </View>
-        <View style={[estilo.container]}>
-          <Text style={{ color: "#fff", fontSize: 25 }}>
+        <View style={ [estilo.container] }>
+          <Text style={ { color: '#fff', fontSize: 25 } }>
             Esqueceu login ou senha?
           </Text>
         </View>
@@ -64,31 +60,31 @@ const LoginScreen = {
 
 const estilo = StyleSheet.create({
   fonte: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 75
   },
   container: {
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   viewTexto: {
     borderLeftWidth: 10,
-    borderLeftColor: "#fff",
+    borderLeftColor: '#fff',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     padding: 15
   },
   viewInput: {
-    width: "95%",
-    alignItems: "center"
+    width: '95%',
+    alignItems: 'center'
   },
   input: {
-    backgroundColor: "#fff",
-    width: "80%",
+    backgroundColor: '#fff',
+    width: '80%',
     height: 45
   },
   colorButton: {
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   }
 });
 
