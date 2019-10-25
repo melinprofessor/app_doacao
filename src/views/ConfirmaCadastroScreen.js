@@ -1,6 +1,21 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, Platform} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
+import StyleSheet, { estilos } from '../styles/styles';
+import ButtonIOSComponent from '../components/ButtonIOSComponent';
+
+export function navigationOptions({ navigate }) {
+    return {
+      title: 'ConfirmaCadastro',
+      header: null,
+    };
+  }
+
+  const ButtonComponent = Platform.select({
+    ios: () => ButtonIOSComponent,
+    android: () => ButtonAndroidComponent,
+  })();
 
 const ConfirmaCadastro = () => (
     <LinearGradient
@@ -8,15 +23,34 @@ const ConfirmaCadastro = () => (
         style={ estilos.container }    
     >
         <View>
-            <Text>AAA</Text>
+            <View>
+                <View>
+                    <Text>Usuário</Text>
+                    <Text>Cadastrado</Text>
+                    <Text>com Sucesso!</Text>
+                </View>                
+            </View>
+            <View>
+                <View>
+                    <Text>TESTE</Text>
+                </View>
+                <ButtonComponent title='FAZER LOGIN'/>
+            </View>
         </View>
     </LinearGradient>
 
 );
 
-const estilos = StyleSheet.create({
+const ConfirmaCadastroScreen = {
+    screen: CpnfirmaCadastro,
+    navigationOptions,
+  };
+
+const estilo = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
       },
 })
+
+export default ConfirmaCadastroScreen;
