@@ -20,38 +20,41 @@ const ButtonComponent = Platform.select({
   android: () => ButtonAndroidComponent
 })();
 
-const Login = props => (
-  <LinearGradient
-    colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
-    style={ estilos.container }
-  >
-    <ImageBackground
-      imageStyle={ { opacity: 0.5 } }
-      source={ loginImg }
-      style={ { width: '100%', height: '100%' } }
+const Login = props => {
+  const { navigate } = props.navigation;
+  return (
+    <LinearGradient
+      colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
+      style={ estilos.container }
     >
-      <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
-        <View style={ estilo.container }>
-          <View style={ estilo.viewTexto }>
-            <Text style={ estilo.fonte }>Boa</Text>
-            <Text style={ estilo.fonte }>Ação</Text>
+      <ImageBackground
+        imageStyle={ { opacity: 0.5 } }
+        source={ loginImg }
+        style={ { width: '100%', height: '100%' } }
+      >
+        <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
+          <View style={ estilo.container }>
+            <View style={ estilo.viewTexto }>
+              <Text style={ estilo.fonte }>Boa</Text>
+              <Text style={ estilo.fonte }>Ação</Text>
+            </View>
+          </View>
+          <View style={ estilo.container }>
+            <InputTextComponent placeholder="Login" />
+            <InputTextComponent placeholder="Senha"  />
+            <ButtonComponent title="ENTRAR" onPress={ () => { navigate('drawer')} }/>
+            <ButtonComponent title="CADASTRAR" />
+          </View>
+          <View style={ [estilo.container] }>
+            <Text style={ { color: '#fff', fontSize: 25 } }>
+              Esqueceu login ou senha?
+            </Text>
           </View>
         </View>
-        <View style={ estilo.container }>
-          <InputTextComponent placeholder="Login" />
-          <InputTextComponent placeholder="Senha" />
-          <ButtonComponent title="ENTRAR" />
-          <ButtonComponent title="CADASTRAR" />
-        </View>
-        <View style={ [estilo.container] }>
-          <Text style={ { color: '#fff', fontSize: 25 } }>
-            Esqueceu login ou senha?
-          </Text>
-        </View>
-      </View>
-    </ImageBackground>
-  </LinearGradient>
-);
+      </ImageBackground>
+    </LinearGradient>
+  );
+}
 
 const LoginScreen = {
   screen: Login,

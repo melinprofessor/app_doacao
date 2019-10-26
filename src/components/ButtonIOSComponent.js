@@ -5,7 +5,7 @@ import {
 
 const ButtonIOSComponent = (props) => (
   <View style={ estilo.viewButton }>
-    <TouchableHighlight style={ estilo.button }>
+    <TouchableHighlight onPress={ props.onPress } style={ estilo.button }>
       <Text style={ estilo.buttonText }>{props.title}</Text>
     </TouchableHighlight>
   </View>
