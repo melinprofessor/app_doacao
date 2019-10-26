@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, { estilos } from '../styles/styles';
 import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
 import ButtonIOSComponent from '../components/ButtonIOSComponent';
+import HeaderComponent from '../components/HeaderComponent';
 
 
 export function navigationOptions({ navigate }) {
@@ -22,42 +23,39 @@ const ButtonComponent = Platform.select({
 const Cadastro = props => {
   const { navigate } = props.navigation;
   return (
-    <LinearGradient style={estilos.container} colors={["#579054", "#304250"]}>
+    <LinearGradient colors={["#579054", "#304250"]} style={estilos.container}>
       <ScrollView>
-        <View style={[estilos.container, { justifyContent: "space-around" }]}>
-            <View style={{flexDirection: 'row',  justifyContent: "space-between", paddingHorizontal: 20, marginVertical: 15}}>
-              <Text style={{color: '#fff'}} onPress={ () => props.navigation.goBack() }>arrow_back</Text>
-              <Text style={{fontSize: 18, color: '#fff'}}>Cadastro de usuário</Text>
-            </View>
-          <View style={estilo.container}>
-            <View style={estilo.viewTexto}>
-              <Text style={estilo.fonte}>Entre com suas</Text>
-              <Text style={estilo.fonte}>informações</Text>
+        <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
+          <HeaderComponent { ...props } iconeNome="arrow-back" nomeTitulo="Cadastro de Usuário" />
+          <View style={ estilo.container }>
+            <View style={ estilo.viewTexto }>
+              <Text style={ estilo.fonte }>Entre com suas</Text>
+              <Text style={ estilo.fonte }>informações</Text>
             </View>
           </View>
-          <View style={estilo.container}>
-            <View style={estilo.entries}>
-              <TextInput placeholder="nome da entidade" style={estilo.input} />
+          <View style={ estilo.container }>
+            <View style={ estilo.entries }>
+              <TextInput placeholder="nome da entidade" style={ estilo.input } />
             </View>
-            <View style={estilo.entries}>
-              <TextInput placeholder="e-mail" style={estilo.input} />
+            <View style={ estilo.entries }>
+              <TextInput placeholder="e-mail" style={ estilo.input } />
             </View>
-             <View style={estilo.entries}>
-              <TextInput placeholder="login" style={estilo.input} />
+            <View style={ estilo.entries }>
+               <TextInput placeholder="login" style={ estilo.input } />
+             </View>
+            <View style={ estilo.entries }>
+              <TextInput placeholder="senha" style={ estilo.input } />
             </View>
-            <View style={estilo.entries}>
-              <TextInput placeholder="senha" style={estilo.input} />
+            <View style={ estilo.entries }>
+              <TextInput placeholder="endereço" style={ estilo.input } />
             </View>
-            <View style={estilo.entries}>
-              <TextInput placeholder="endereço" style={estilo.input} />
+            <View style={ estilo.entries }>
+              <TextInput placeholder="telefone" style={ estilo.input } />
             </View>
-            <View style={estilo.entries}>
-              <TextInput placeholder="telefone" style={estilo.input} />
+            <View style={ estilo.entries }>
+              <TextInput multiline placeholder="descrição da entidade" style={estilo.inputDesciption} />
             </View>
-            <View style={estilo.entries}>
-              <TextInput placeholder="descrição da entidade" style={estilo.inputDesciption} multiline />
-            </View>
-            <ButtonComponent title="CONFIRMAR" onPress={ () => navigate('confirmaCadastro')}/>
+            <ButtonComponent onPress={ () => navigate('confirmaCadastro')} title="CONFIRMAR" />
           </View>
         </View>
       </ScrollView>

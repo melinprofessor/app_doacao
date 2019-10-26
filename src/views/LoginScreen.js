@@ -42,11 +42,11 @@ const Login = props => {
           <View style={ estilo.container }>
             <InputTextComponent placeholder="Login" />
             <InputTextComponent placeholder="Senha"  />
-            <ButtonComponent title="ENTRAR" onPress={ () => { navigate('drawer')} }/>
-            <ButtonComponent title="CADASTRAR" onPress={ () => { navigate('cadastro')} }/>
+            <ButtonComponent onPress={ () => { navigate('drawer')} } title="ENTRAR" />
+            <ButtonComponent onPress={ () => { navigate('cadastro')} } title="CADASTRAR" />
           </View>
           <View style={ [estilo.container] }>
-            <Text style={ { color: '#fff', fontSize: 25 } }>
+            <Text onPress={ () => navigate('esqueceuSenha') } style={ { color: '#fff', fontSize: 25 } }>
               Esqueceu login ou senha?
             </Text>
           </View>
