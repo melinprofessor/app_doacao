@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { View, Text, Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -17,29 +16,24 @@ const ButtonComponent = Platform.select({
   android: () => ButtonAndroidComponent,
 })();
 
-const ConfirmaCadastro = () => (
+const ConfirmaCadastro = (props) => (
   <LinearGradient
     colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
     style={ estilos.container }
-    >
-    <View>
+  >
+    <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
       <View style={ estilo.container }>
         <View style={ estilo.viewTexto }>
-          <Text>Usuário</Text>
-          <Text>Cadastrado</Text>
-          <Text>com Sucesso!</Text>
+          <Text style={ estilo.fonte }>Usuário</Text>
+          <Text style={ estilo.fonte }>Cadastrado</Text>
+          <Text style={ estilo.fonte }>com Sucesso!</Text>
         </View>
       </View>
-      <View>
-        <View>
-          <Text>TESTE</Text>
-        </View>
+      <View style={ estilo.container }>
         <ButtonComponent title='FAZER LOGIN' />
       </View>
-      <View>
-        <Text>
-                    Confirme o e-mail recebido.
-        </Text>
+      <View style={ estilo.container }>
+        <Text style={ estilo.fonte2 }>Confirme o e-mail recebido</Text>
       </View>
     </View>
   </LinearGradient>
@@ -52,6 +46,14 @@ const ConfirmaCadastroScreen = {
 };
 
 const estilo = StyleSheet.create({
+  fonte: {
+    color: '#fff',
+    fontSize: 45,
+  },
+  fonte2: {
+    color: '#fff',
+    fontSize: 25,
+  },
   container: {
     alignItems: 'center',
     justifyContent: 'center',

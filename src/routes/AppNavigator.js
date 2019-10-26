@@ -5,8 +5,8 @@ import LoginScreen from '../views/LoginScreen';
 import ConfirmaCadastroScreen from '../views/ConfirmaCadastroScreen';
 
 const createStack = createStackNavigator({
-  login: LoginScreen,
   confirmaCadastro: ConfirmaCadastroScreen,
+  login: LoginScreen,  
 });
 
 export default createAppContainer(createStack);
