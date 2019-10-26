@@ -43,7 +43,7 @@ const Login = props => {
             <InputTextComponent placeholder="Login" />
             <InputTextComponent placeholder="Senha"  />
             <ButtonComponent title="ENTRAR" onPress={ () => { navigate('drawer')} }/>
-            <ButtonComponent title="CADASTRAR" />
+            <ButtonComponent title="CADASTRAR" onPress={ () => { navigate('cadastro')} }/>
           </View>
           <View style={ [estilo.container] }>
             <Text style={ { color: '#fff', fontSize: 25 } }>
