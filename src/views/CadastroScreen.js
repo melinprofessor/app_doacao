@@ -57,7 +57,7 @@ const Cadastro = props => {
             <View style={estilo.entries}>
               <TextInput placeholder="descrição da entidade" style={estilo.inputDesciption} multiline />
             </View>
-            <ButtonComponent title="CONFIRMAR" />
+            <ButtonComponent title="CONFIRMAR" onPress={ () => navigate('confirmaCadastro')}/>
           </View>
         </View>
       </ScrollView>
