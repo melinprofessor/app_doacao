@@ -3,7 +3,14 @@ import { StyleSheet, View, TextInput } from 'react-native';
 
 const InputTextComponent = (props) => (
   <View style={ estilo.viewContainer }>
-    <TextInput placeholder={ props.placeholder } style={ estilo.input } />
+    {console.log(props)}
+    <TextInput
+    placeholder={ props.placeholder }
+    style={ estilo.input }
+    autoCapitalize='none'
+    autoCorrect={false}
+    value={props.value}
+    onChangeText={(text) => props.setValue(text)} />
   </View>
 );
 

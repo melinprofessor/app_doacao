@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  TouchableHighlight, Text, StyleSheet, View,
+  TouchableOpacity, Text, StyleSheet, View,
 } from 'react-native';
 
 const ButtonIOSComponent = (props) => (
   <View style={ estilo.viewButton }>
-    <TouchableHighlight onPress={ props.onPress } style={ estilo.button }>
+    <TouchableOpacity onPress={props.onPressHandler} style={ estilo.button }>
       <Text style={ estilo.buttonText }>{props.title}</Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   </View>
 );
 
