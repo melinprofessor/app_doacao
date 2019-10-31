@@ -22,14 +22,14 @@ const Solicitar = (props) => (
     colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
     style={ estilos.container }
   >
-    <View style={ [estilos.container, {justifyContent: 'center' }] }>
+    <View style={ [estilos.container, { justifyContent: 'center' }] }>
       <View style={ estilo.container }>
         <TextInput placeholder='Produto' style={ estilo.input } />
         <TextInput placeholder='Descrição' style={ estilo.input } />
       </View>
-      <View style={ [estilo.container, { flexDirection: 'row'}] }>
-        <TextInput placeholder='Entidade' style={[ estilo.inputEntidade, { marginTop: 20, paddingTop: 17}] } />
-        <ButtonComponent title='Solicitar' /> 
+      <View style={ [estilo.container, { flexDirection: 'row' }] }>
+        <TextInput placeholder='Entidade' style={ [estilo.inputEntidade, { marginTop: 20, paddingTop: 17 }] } />
+        <ButtonComponent title='Solicitar' />
       </View>
     </View>
   </LinearGradient>
