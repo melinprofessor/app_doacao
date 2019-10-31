@@ -1,7 +1,6 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
-
-const urlBase = 'https://boacao.herokuapp.com'
+const urlBase = 'https://boacao.herokuapp.com';
 axios.defaults.baseURL = urlBase;
 
 
@@ -13,7 +12,6 @@ axios.interceptors.request.use(async config => {
   return config;
 },
   error => {
-    console.log('ffffffff')
     return Promise.reject(error);
   }
 );
@@ -38,22 +36,20 @@ axios.interceptors.response.use(async function (response) {
 });
 
 
- export const autenticar = async (email, password) => {
+ export const Autenticar = async (email, password) => {
    try {
-    const response = await axios({
-      method: 'post',
-      url: '/autenticar',
-      data: {
-        email,
-        password
-      }
-    })
-    const {token, entidade} =  response.data;
-    return Promise.resolve({
-      token,
-      entidade
+
+     const response = await axios.post('/autenticar', {
+      email,
+      password
     });
+
+     const { token, entidade } = response.data;
+     return Promise.resolve({
+       token,
+       entidade
+     })
    } catch (error) {
-   return Promise.reject(error);
+     return Promise.reject(error);
    }
  }

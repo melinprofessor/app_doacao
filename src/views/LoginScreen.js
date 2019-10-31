@@ -5,7 +5,7 @@ import StyleSheet, { estilos } from '../styles/styles';
 import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
 import ButtonIOSComponent from '../components/ButtonIOSComponent';
 import InputTextComponent from '../components/InputTextComponent';
-import { teste, autenticar } from '../service/api';
+import { Autenticar } from '../service/api';
 import LoaderComponent from '../components/LoaderComponent';
 import AlertComponent from '../components/AlertComponent';
 
@@ -36,14 +36,15 @@ const Login = props => {
 
 
   const autenticarHandle = async () => {
+
     setVisible(true);
-    await autenticar(email, password).then((result) => {
-      console.log(result)
+    await Autenticar(email, password).then((result) => {
+      console.log(result);
       setVisible(false);
       setError(false);
       navigate('drawer');
     }).catch(e => {
-      console.log(e)
+      console.log(e.data)
       setError(e)
       setVisible(false);
       AlertComponent('Erro ao Entrar', e.data)
@@ -56,7 +57,7 @@ const Login = props => {
       colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
       style={ estilos.container }
     >
-      {visible && <LoaderComponent />}
+      {visible && <LoaderComponent visible={ visible } />}
       <ImageBackground
         imageStyle={ { opacity: 0.5 } }
         source={ loginImg }
@@ -70,9 +71,9 @@ const Login = props => {
             </View>
           </View>
           <View style={ estilo.container }>
-            <InputTextComponent placeholder="Email"  setValue={setEmail} value={email} />
-            <InputTextComponent placeholder="Senha"  setValue={setPassword} value={password}/>
-            <ButtonComponent onPressHandler={autenticarHandle} title="ENTRAR" />
+            <InputTextComponent placeholder="Email"  setValue={ setEmail } value={ email } />
+            <InputTextComponent placeholder="Senha"  setValue={ setPassword } value={ password } />
+            <ButtonComponent onPressHandler={async() => { await autenticarHandle(email,password)}} title="ENTRAR" />
             <ButtonComponent onPressHandler={ () => { navigate('cadastro')} } title="CADASTRAR" />
           </View>
           <View style={ [estilo.container] }>
