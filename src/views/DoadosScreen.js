@@ -41,25 +41,27 @@ const Doados_Screen = (props) => (
             },
           ] }
             >
-              <View style={{borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%'}}>
-              <Text style={ estilo.input, estilo.viewTexto  }>Produto</Text>
-              </View>
+            <View style={ { borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%' } }>
+              <Text style={ estilo.input, estilo.viewTexto }>Produto</Text>
+            </View>
 
-              <View style={{borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%'}} >
+            <View style={ { borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%', paddingBottom: 50 } }>
               <Text style={ estilo.input, estilo.viewTexto }>Descrição</Text>
-              </View>
+            </View>
 
-              <View style={{borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%'}}>
-              <Text style={ estilo.input, estilo.viewTexto }>Entidade</Text>
-              </View>
-
+            <View style={ { flexDirection: 'row' } }>
               <View>
-              <Text style={ estilo.input, estilo.viewTexto }>Data</Text>
+                <Text style={ estilo.input, estilo.viewTexto }>Entidade</Text>
               </View>
 
-             
+              <View style={ estilo.viewData }>
+                <Text style={ estilo.input, estilo.viewTexto }>Data</Text>
+              </View>
 
             </View>
+
+
+          </View>
 
 
         </View>
@@ -76,7 +78,7 @@ const Doados_Screen = (props) => (
           />
 
       </View>
-     
+
     </View>
   </LinearGradient>
 );
@@ -106,26 +108,31 @@ const estilo = StyleSheet.create({
     borderBottomRightRadius: 10,
     padding: 15,
     alignItems: 'flex-start',
-    
-    
-    
+
+
   },
+
   viewInput: {
     width: '90%',
-    
+
     alignItems: 'center',
   },
+
   input: {
     backgroundColor: '#fff',
     width: '80%',
     height: 45,
     padding: 10,
-    
-   
+
+
   },
   colorButton: {
     backgroundColor: '#fff',
   },
+
+  viewData: {
+    marginLeft: 100,
+  }
 
 });
 
