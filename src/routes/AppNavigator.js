@@ -2,18 +2,12 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import LoginScreen from '../views/LoginScreen';
-<<<<<<< HEAD
-import EntidadesScreen from '../views/EntidadesScreen';
-
-const createStack = createStackNavigator({
-  //login: LoginScreen,
-  entidades: EntidadesScreen,
-=======
 import MenuPrincipalScreen from '../views/menuPrincipal/MenuPrincipalScreen';
 import CadastroScreen from '../views/CadastroScreen';
 import ConfirmaCadastroScreen from '../views/ConfirmaCadastroScreen';
 import EsqueceuSenhaScreen from '../views/EsqueceuSenhaScreen';
 import DoarScreen from '../views/DoarScreen';
+import EntidadesScreen from '../views/EntidadesScreen';
 
 const createDrawer = createDrawerNavigator({
   menu: MenuPrincipalScreen,
@@ -21,6 +15,7 @@ const createDrawer = createDrawerNavigator({
 });
 
 const createStack = createStackNavigator({
+  entidades: EntidadesScreen,
   login: LoginScreen,
   cadastro: CadastroScreen,
   confirmaCadastro: ConfirmaCadastroScreen,
@@ -31,7 +26,6 @@ const createStack = createStackNavigator({
       header: null
     },
   }
->>>>>>> d7e8a27d9165a1aef5095cb0b4684a0fb19eaf0d
 });
 
 export default createAppContainer(createStack);
