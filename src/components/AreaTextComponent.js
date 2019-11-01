@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
 
-const InputTextComponent = (props) => (
+const AreaTextComponent = (props) => (
   <View style={estilo.viewContainer}>
     <TextInput
       autoCapitalize='none'
@@ -25,8 +25,9 @@ const estilo = StyleSheet.create({
   input: {
     backgroundColor: '#fff',
     width: '80%',
-    height: 45,
+    height: 150, 
+    textAlignVertical: 'top' 
   },
 });
 
-export default InputTextComponent;
+export default AreaTextComponent;

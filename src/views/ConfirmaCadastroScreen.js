@@ -17,25 +17,25 @@ const ButtonComponent = Platform.select({
 })();
 
 const ConfirmaCadastro = (props) => {
-  const {navigate} = props.navigation;
+  const { navigate } = props.navigation;
   return (
     <LinearGradient
-      colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
-      style={ estilos.container }
+      colors={['#3CB371', '#2E8B57', '#008000', '#228B22']}
+      style={estilos.container}
     >
-      <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
-        <View style={ estilo.container }>
-          <View style={ estilo.viewTexto }>
-            <Text style={ estilo.fonte }>Usuário</Text>
-            <Text style={ estilo.fonte }>Cadastrado</Text>
-            <Text style={ estilo.fonte }>com Sucesso!</Text>
+      <View style={[estilos.container, { justifyContent: 'space-around' }]}>
+        <View style={estilo.container}>
+          <View style={estilo.viewTexto}>
+            <Text style={estilo.fonte}>Usuário</Text>
+            <Text style={estilo.fonte}>Cadastrado</Text>
+            <Text style={estilo.fonte}>com Sucesso!</Text>
           </View>
         </View>
-        <View style={ estilo.container }>
-          <ButtonComponent title='FAZER LOGIN'  onPress={ () => navigate('login')}/>
+        <View style={estilo.container}>
+          <ButtonComponent title='FAZER LOGIN' onPressHandler={() => navigate('login')} />
         </View>
-        <View style={ estilo.container }>
-          <Text style={ estilo.fonte2 }>Confirme o e-mail recebido</Text>
+        <View style={estilo.container}>
+          <Text style={estilo.fonte2}>Confirme o e-mail recebido</Text>
         </View>
       </View>
     </LinearGradient>

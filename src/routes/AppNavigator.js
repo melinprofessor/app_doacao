@@ -10,10 +10,11 @@ import DoarScreen from '../views/DoarScreen';
 
 const createDrawer = createDrawerNavigator({
   menu: MenuPrincipalScreen,
-  doar: DoarScreen,
+ 
 });
 
 const createStack = createStackNavigator({
+  doar: DoarScreen,
   login: LoginScreen,
   cadastro: CadastroScreen,
   confirmaCadastro: ConfirmaCadastroScreen,

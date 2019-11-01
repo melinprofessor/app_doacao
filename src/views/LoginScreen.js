@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, ImageBackground, Platform, Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, { estilos } from '../styles/styles';
@@ -54,30 +54,30 @@ const Login = props => {
 
   return (
     <LinearGradient
-      colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
-      style={ estilos.container }
+      colors={['#3CB371', '#2E8B57', '#008000', '#228B22']}
+      style={estilos.container}
     >
-      {visible && <LoaderComponent visible={ visible } />}
+      {visible && <LoaderComponent visible={visible} />}
       <ImageBackground
-        imageStyle={ { opacity: 0.5 } }
-        source={ loginImg }
-        style={ { width: '100%', height: '100%' } }
+        imageStyle={{ opacity: 0.5 }}
+        source={loginImg}
+        style={{ width: '100%', height: '100%' }}
       >
-        <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
-          <View style={ estilo.container }>
-            <View style={ estilo.viewTexto }>
-              <Text style={ estilo.fonte }>Boa</Text>
-              <Text style={ estilo.fonte }>Ação</Text>
+        <View style={[estilos.container, { justifyContent: 'space-around' }]}>
+          <View style={estilo.container}>
+            <View style={estilo.viewTexto}>
+              <Text style={estilo.fonte}>Boa</Text>
+              <Text style={estilo.fonte}>Ação</Text>
             </View>
           </View>
-          <View style={ estilo.container }>
-            <InputTextComponent placeholder="Email"  setValue={ setEmail } value={ email } />
-            <InputTextComponent placeholder="Senha"  setValue={ setPassword } value={ password } />
-            <ButtonComponent onPressHandler={async() => { await autenticarHandle(email,password)}} title="ENTRAR" />
-            <ButtonComponent onPressHandler={ () => { navigate('cadastro')} } title="CADASTRAR" />
+          <View style={estilo.container}>
+            <InputTextComponent placeholder="Email" setValue={setEmail} value={email} />
+            <InputTextComponent placeholder="Senha" setValue={setPassword} value={password} />
+            <ButtonComponent onPressHandler={async () => { await autenticarHandle(email, password) }} title="ENTRAR" />
+            <ButtonComponent onPressHandler={() => { navigate('cadastro') }} title="CADASTRAR" />
           </View>
-          <View style={ [estilo.container] }>
-            <Text onPress={ () => navigate('esqueceuSenha') } style={ { color: '#fff', fontSize: 25 } }>
+          <View style={[estilo.container]}>
+            <Text onPress={() => navigate('esqueceuSenha')} style={{ color: '#fff', fontSize: 25 }}>
               Esqueceu login ou senha?
             </Text>
           </View>

@@ -18,7 +18,10 @@ module.exports = {
   plugins: ['react', 'react-native', 'prettier'],
   rules: {
     // React
-    // "react/require-extension": "off",
+    "object-curly-spacing": [2, "never", {
+      "objectsInObjects": false,
+      "arraysInObjects": false
+    }],
     "quotes": [2, "single", { "avoidEscape": true }],
     'no-use-before-define': 'off',
     'react/forbid-prop-types': 'error',
@@ -40,7 +43,7 @@ module.exports = {
     // JSX
     'react/jsx-boolean-value': 'error',
     'react/jsx-closing-bracket-location': 'error',
-    'react/jsx-curly-spacing': ['error', 'always'],
+    'react/jsx-curly-spacing':[2, {"when": "never", "allowMultiline": false}],
     'react/jsx-equals-spacing': 'error',
     'react/jsx-first-prop-new-line': 'error',
     'react/jsx-handler-names': 'error',
