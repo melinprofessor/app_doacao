@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Platform } from 'react-native';
+import { View, Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, { estilos } from '../styles/styles';
 import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
