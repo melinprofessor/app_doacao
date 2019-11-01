@@ -14,8 +14,8 @@ const createDrawer = createDrawerNavigator({
 });
 
 const createStack = createStackNavigator({
-  login: LoginScreen,
   cadastro: CadastroScreen,
+  login: LoginScreen,
   confirmaCadastro: ConfirmaCadastroScreen,
   esqueceuSenha: EsqueceuSenhaScreen,
   drawer: {
