@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  TouchableHighlight, Text, StyleSheet, View,
+  TouchableOpacity, Text, StyleSheet, View,
 } from 'react-native';
 
 const ButtonIOSComponent = (props) => (
   <View style={ estilo.viewButton }>
-    <TouchableHighlight style={ estilo.button }>
+    <TouchableOpacity onPress={props.onPressHandler} style={ estilo.button }>
       <Text style={ estilo.buttonText }>{props.title}</Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   </View>
 );
 
@@ -32,7 +32,7 @@ const estilo = StyleSheet.create({
     fontSize: 25,
   },
   viewButton: {
-    marginTop: 15,
+    paddingTop: 15,
     alignContent: 'center',
     justifyContent: 'center',
   },

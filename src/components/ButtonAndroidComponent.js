@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  TouchableHighlight, Text, StyleSheet, View,
+  TouchableOpacity, Text, StyleSheet, View,
 } from 'react-native';
 
 const ButtonAndroidComponent = (props) => (
   <View style={ estilo.viewButton }>
-    <TouchableHighlight style={ estilo.button }>
-      <Text style={ estilo.buttonText }>{ props.title }</Text>
-    </TouchableHighlight>
+    <TouchableOpacity onPress={ props.onPressHandler } style={ estilo.button }>
+      <Text style={ estilo.buttonText }>{props.title}</Text>
+    </TouchableOpacity>
   </View>
 );
 
@@ -22,16 +22,17 @@ const estilo = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-    width: 150,
+    width: 200,
   },
   buttonText: {
     color: '#008000',
     textAlign: 'center',
     paddingLeft: 10,
     paddingRight: 10,
+    fontSize: 25,
   },
   viewButton: {
-    marginTop: 15,
+    paddingTop: 15,
     alignContent: 'center',
     justifyContent: 'center',
   },
