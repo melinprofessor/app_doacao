@@ -4,7 +4,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, { estilos } from '../styles/styles';
 import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
 import ButtonIOSComponent from '../components/ButtonIOSComponent';
-
+import HeaderComponent from '../components/HeaderComponent';
+import ListaComponent from '../components/ListaComponent';
 
 export function navigationOptions({ navigate }) {
   return {
@@ -20,29 +21,20 @@ const ButtonComponent = Platform.select({
 
 
 const Entidades = props => (
-  <LinearGradient style={estilos.container} colors={["#579054", "#304250"]}>
+  <LinearGradient colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] } style={ estilos.container }>
+    <HeaderComponent { ...props } iconeNome="menu" nomeTitulo="Login" />
     <ScrollView>
-      <View style={[estilos.container, { justifyContent: "space-around" }]}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingHorizontal: 20,
-            marginVertical: 15
-          }}
-        >
-          <Text style={{ color: "#fff" }}>arrow_back</Text>
-          <Text style={{ fontSize: 18, color: "#fff" }}>
-            Cadastro de usuário
-          </Text>
-        </View>
-        <View style={{backgroundColor: "#fff"}}>
+      <ListaComponent />     
+      {/* <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
+        
+        <View style={ {backgroundColor: '#fff'} }>
           <Text>Entidade</Text>
           <Text>Enereço</Text>
           <Text>Descrição</Text>
           <Text>Telefone</Text>
         </View>
-      </View>
+
+      </View> */}
     </ScrollView>
   </LinearGradient>
 );
