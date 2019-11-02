@@ -37,11 +37,14 @@ axios.interceptors.response.use(async function (response) {
 
 export const CadastrarEntidade = async(entity) => {
   try {
-      const response = await axios.post('/entidade', entity);
+    console.log(entity)
+      const response = await axios.post('/registrar', entity);
+
       const { data} = response;
-      return data;
+      return Promise.resolve(data);
   } catch (error) {
-      return error;
+    console.log(error.data)
+      return Promise.reject(error.data);
   }
 }
 
