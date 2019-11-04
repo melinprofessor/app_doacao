@@ -18,6 +18,30 @@ export default class ListaComponent extends Component {
         descricao: 'O centro procura a elevação do espírito de cada um do seus participantes por boas ações na sociedade.',
         telefone: '+5517984574848',
       },
+      {
+        entidade: 'Igreja Batista',
+        endereco: 'Rua José Manoel, 188, Bebedouro - SP',
+        descricao: 'Valoriza as boas práticas, a bondade de coração e um espírito calmo.',
+        telefone: '+551733458774',
+      },
+      {
+        entidade: 'Basílica de São Pedro',
+        endereco: 'Rua José Manoel, 188, Bebedouro - SP',
+        descricao: 'Valoriza as boas práticas, a bondade de coração e um espírito calmo.',
+        telefone: '+551733458774',
+      },
+      {
+        entidade: 'Capela Sistina',
+        endereco: 'Rua José Manoel, 188, Bebedouro - SP',
+        descricao: 'Valoriza as boas práticas, a bondade de coração e um espírito calmo.',
+        telefone: '+551733458774',
+      },
+      {
+        entidade: 'Igreja do Vaticano',
+        endereco: 'Rua José Manoel, 188, Bebedouro - SP',
+        descricao: 'Valoriza as boas práticas, a bondade de coração e um espírito calmo.',
+        telefone: '+551733458774',
+      },
     ]};
   }
 
@@ -27,7 +51,7 @@ export default class ListaComponent extends Component {
         {this.state.listaItens.map(item => (
           <ItensComponent
             key={ item.entidade }
-            titulo={ item.entidade }
+            entidade={ item.entidade }
             endereco={ item.endereco }
             descricao={ item.descricao }
             telefone={ item.telefone }

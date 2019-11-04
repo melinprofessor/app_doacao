@@ -1,16 +1,23 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+// import { Divider } from 'react-native-elements';
 
 const ItensComponent = props => {
   return (
     <View style={ estilo.container }>
       <View style={ estilo.detalhes }>
-        <Text style={ estilo.titulo }>{props.titulo}</Text>
-        <Text>{props.endereco}</Text>
-        <Text>{props.descricao}</Text>
-        <Text>{props.telefone}</Text>
-      </View>
+        <Text style={ estilo.entidade }>{props.entidade}</Text>
+        <Text style={ estilo.endereco }>{props.endereco}</Text>
+        <Text style={ estilo.descricao }>{props.descricao}</Text>
+        {/* <Divider style={{ backgroundColor: 'blue' }} /> */}
+        <View style={ estilo.telefone }>
+          <Icon color="#000" name='phone'  size={ 20 } />
+          <Text style={ estilo.telefoneText }>{props.telefone}</Text>
+        </View>        
+      </View>      
     </View>
+    
   );
 };
 
@@ -21,19 +28,27 @@ const estilo = StyleSheet.create({
     backgroundColor: '#fff',
     margin: 10,
     padding: 10,
-    flexDirection: 'row',
+    flexDirection: 'column',
     borderRadius: 10,
   },
-  detalhes: {
-    flex: 1.5,
-  },
-  titulo: {
+  entidade: {
     fontSize: 18,
-    color: 'blue',
+    color: '#304250',
     marginBottom: 5,
   },
-  valor: {
-    color: 'green',
+  endereco: {
+
+  },
+  descricao: {
+
+  },
+  telefone: {
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    alignItems: 'flex-end',    
+  },
+  telefoneText: {
+    marginLeft: 5,
   },
 });
 export default ItensComponent;
