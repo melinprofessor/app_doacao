@@ -12,10 +12,10 @@ import EntidadesScreen from '../views/EntidadesScreen';
 const createDrawer = createDrawerNavigator({
   menu: MenuPrincipalScreen,
   doar: DoarScreen,
+  entidades: EntidadesScreen,
 });
 
 const createStack = createStackNavigator({
-  entidades: EntidadesScreen,
   login: LoginScreen,
   cadastro: CadastroScreen,
   confirmaCadastro: ConfirmaCadastroScreen,

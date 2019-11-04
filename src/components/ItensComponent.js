@@ -7,10 +7,11 @@ const ItensComponent = props => {
   return (
     <View style={ estilo.container }>
       <View style={ estilo.detalhes }>
-        <Text style={ estilo.entidade }>{props.entidade}</Text>
+        <Text style={ estilo.entidade }>{props.entidade}</Text>        
         <Text style={ estilo.endereco }>{props.endereco}</Text>
+        <View style={ estilo.linha } />
         <Text style={ estilo.descricao }>{props.descricao}</Text>
-        {/* <Divider style={{ backgroundColor: 'blue' }} /> */}
+        <View style={ estilo.linha } />
         <View style={ estilo.telefone }>
           <Icon color="#000" name='phone'  size={ 20 } />
           <Text style={ estilo.telefoneText }>{props.telefone}</Text>
@@ -45,10 +46,15 @@ const estilo = StyleSheet.create({
   telefone: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
-    alignItems: 'flex-end',    
+    alignItems: 'center',
   },
   telefoneText: {
     marginLeft: 5,
+  },
+  linha: {
+    backgroundColor: '#000',
+    borderTopWidth: 1,    
+    marginVertical: 5,
   },
 });
 export default ItensComponent;
