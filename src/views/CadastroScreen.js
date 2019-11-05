@@ -33,7 +33,6 @@ const Cadastro = props => {
   const { navigate } = props.navigation;
 
 
-  //navigate = props.navigation.navigate; // ?
   const [entidade, setEntidade] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,157 +44,120 @@ const Cadastro = props => {
   const [visible, setVisible] = useState(false);
 
   const registrar = async entidadeObject => {
+
     setVisible(true);
     const entidade = await CadastrarEntidade(entidadeObject).then((result) => {
       setVisible(false);
-      navigate('login')
+      navigate('confirmaCadastro')
     }).catch((error) => {
       setVisible(false);
       AlertComponent('Erro ao Cadastrar', error)
     })
     console.log(entidade)
-    // let title,
-    // message = '';
-    // let buttons = [
-    //   {
-    //     text: 'Cancel',
-    //     onPress: () => navigate('CadastroScreen'), // ?
-    //     style: 'cancel'
-    //   },
-    //   {
-    //     text: 'Ok',
-    //     onPress: () => console.log('ok')
-    //   },
-    // ];
-
-    // if (entidade && entidade.code === 11000) {
-    //   title = 'Erro ao Cadastrar';
-    //   message = 'Já existe uma entidade cadastrada com este nome';
-    // } else if (entidade.errors) {
-    //   title = 'Erro ao Cadastrar';
-    //   message = Object.keys(entidade.errors)
-    //     .map(t => entidade.errors[t].message)
-    //     .join('\n');
-    // } else {
-    //   title = 'Sucesso ao cadastrar!';
-    //   message = 'Deseja cadastrar outra Entidade?';
-    //   buttons = [
-    //     {
-    //       text: 'Não',
-    //       onPress: () => navigate('confirmaCadastro'),
-    //       style: 'cancel'
-    //     },
-    //     {
-    //       text: 'Sim',
-    //       onPress: () => console.log('sim')
-    //     }
-    //   ];
-    // }
-    // return AlertComponent(title, message, buttons);
   };
 
   return (
-    <LinearGradient colors={["#579054", "#304250"]} style={estilos.container}>
-      {visible && <LoaderComponent visible={visible} />}
+    <LinearGradient colors={ ['#579054', '#304250'] } style={ estilos.container }>
+      {visible && <LoaderComponent visible={ visible } />}
       <ScrollView>
-        <View style={[estilos.container, { justifyContent: "space-around" }]}>
+        <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
           <HeaderComponent
-            {...props}
+            { ...props }
             iconeNome="arrow-back"
             nomeTitulo="Cadastro de Usuário"
           />
-          <View style={estilo.container}>
+          <View style={ estilo.container }>
             <View style={estilo.viewTexto}>
               <Text style={estilo.fonte}>Entre com suas</Text>
               <Text style={estilo.fonte}>informações</Text>
             </View>
           </View>
           <View
-            style={[
+            style={ [
               estilo.container,
-              { justifyContent: "center", alignItems: "center" }
-            ]}
+              { justifyContent: 'center', alignItems: 'center' }
+            ] }
           >
             <View
-              style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
+              style={ {
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center'
+              } }
             >
               <InputTextComponent
-                placeholder="nome da entidade"
-                setValue={setEntidade}
-                value={entidade}
+                placeholder='nome da entidade'
+                setValue={ setEntidade }
+                value={ entidade }
               />
             </View>
             <View
-              style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
+              style={ {
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center'
+              } }
             >
               <InputTextComponent
-                placeholder="e-mail"
-                setValue={setEmail}
-                value={email}
+                placeholder='e-mail'
+                setValue={ setEmail }
+                value={ email }
               />
             </View>
             <View
-              style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
+              style={ {
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center'
+              } }
             >
               <InputTextComponent
-                placeholder="senha"
-                setValue={setPassword}
-                value={password}
+                placeholder='senha'
+                setValue={ setPassword }
+                value={ password }
               />
             </View>
             <View
-              style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
+              style={ {
+                width:  '100%',
+                justifyContent: 'center',
+                alignItems: 'center'
+              } }
             >
               <InputTextComponent
                 placeholder="endereço"
-                setValue={setEndereco}
-                value={endereco}
+                setValue={ setEndereco }
+                value={ endereco }
               />
             </View>
             <View
-              style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
+              style={ {
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center'
+              } }
             >
               <InputTextComponent
                 placeholder="telefone"
-                setValue={setTelefone}
-                value={telefone}
+                setValue={ setTelefone }
+                value={ telefone }
               />
             </View>
             <View
-              style={{
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
+              style={ {
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center'
+              } }
             >
               <InputTextComponent
                 multiline
-                placeholder="descrição da entidade"
-                setValue={setDescricao}
+                placeholder='descrição da entidade'
+                setValue={ setDescricao }
               />
             </View>
             <ButtonComponent
-              onPressHandler={async () => {
+              onPressHandler={ async () => {
                 await registrar({
                   name: entidade,
                   email: email,
@@ -203,9 +165,9 @@ const Cadastro = props => {
                   address: endereco,
                   contact: telefone,
                   active: active,
-                  description: descricao
+                  description: descricao,
                 });
-              }}
+              } }
               title="CONFIRMAR"
             />
           </View>

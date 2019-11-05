@@ -32,7 +32,7 @@ const ConfirmaCadastro = (props) => {
           </View>
         </View>
         <View style={ estilo.container }>
-          <ButtonComponent title='FAZER LOGIN'  onPress={ () => navigate('login')}/>
+          <ButtonComponent title='FAZER LOGIN'  onPressHandler={ () => navigate('login')}/>
         </View>
         <View style={ estilo.container }>
           <Text style={ estilo.fonte2 }>Confirme o e-mail recebido</Text>
