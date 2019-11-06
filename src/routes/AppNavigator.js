@@ -26,7 +26,6 @@ const createDrawer = createDrawerNavigator({
   doados: DoadosScreen,
 
 });
-
 const createStack = createStackNavigator({
 
   login: LoginScreen,

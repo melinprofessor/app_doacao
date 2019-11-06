@@ -7,7 +7,7 @@ axios.defaults.baseURL = urlBase;
 axios.interceptors.request.use(async config => {
   const token = await AsyncStorage.getItem('token');
   if(token) {
-    config.headers.Authorization = `Barear ${token}`
+    config.headers.Authorization = `Bearer ${token}`
   }
   return config;
 },
@@ -48,6 +48,20 @@ export const CadastrarEntidade = async(entity) => {
   }
 }
 
+export const CadastrarDoacao = async(entity) => {
+  try {
+
+      const response = await axios.post('/doacao', entity);
+
+      console.log(response)
+      const { data} = response;
+      return Promise.resolve(data);
+  } catch (error) {
+    console.log(error.data)
+      return Promise.reject(error.data);
+  }
+}
+
  export const Autenticar = async (email, password) => {
    try {
 
@@ -57,14 +71,18 @@ export const CadastrarEntidade = async(entity) => {
     });
 
      const { token, entidade } = response.data;
-     if(entidade) {
-      await AsyncStorage.setItem('entidade', JSON.parse(entidade));
-     }
+
+
+      if(entidade) {
+        await AsyncStorage.setItem('entidade', entidade._id);
+        console.log(entidade);
+      }
      return Promise.resolve({
        token,
        entidade
      })
    } catch (error) {
+     console.log(error)
      return Promise.reject(error);
    }
  }
