@@ -12,6 +12,8 @@ import EntidadesScreen from '../views/EntidadesScreen';
 import ConfirmaEmailScreen from '../views/ConfirmaEmailScreen';
 import InfoScreen from '../views/InfoScreen';
 import DoadosScreen from '../views/DoadosScreen';
+import PedidosScreen from '../views/PedidosScreen';
+
 
 
 const createDrawer = createDrawerNavigator({
@@ -20,11 +22,12 @@ const createDrawer = createDrawerNavigator({
   doar: DoarScreen,
   entidades: EntidadesScreen,
   info: InfoScreen,
+  pedidos: PedidosScreen,
+  doados: DoadosScreen,
 
 });
 
 const createStack = createStackNavigator({
-  doados: DoadosScreen,
   login: LoginScreen,
   cadastro: CadastroScreen,
   confirmaCadastro: ConfirmaCadastroScreen,
