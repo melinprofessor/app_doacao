@@ -7,7 +7,7 @@ axios.defaults.baseURL = urlBase;
 axios.interceptors.request.use(async config => {
   const token = await AsyncStorage.getItem('token');
   if(token) {
-    config.headers.Authorization = `Barear ${token}`
+    config.headers.Authorization = `Bearer ${token}`
   }
   return config;
 },
@@ -45,6 +45,10 @@ axios.interceptors.response.use(async function (response) {
     });
 
      const { token, entidade } = response.data;
+
+      if(entidade) {
+        await AsyncStorage.setItem('entidade', JSON.parse(entidade));
+      }
      return Promise.resolve({
        token,
        entidade

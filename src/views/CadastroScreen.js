@@ -23,7 +23,7 @@ const ButtonComponent = Platform.select({
 const Cadastro = props => {
   const { navigate } = props.navigation;
   return (
-    <LinearGradient colors={["#579054", "#304250"]} style={estilos.container}>
+    <LinearGradient colors={ ['#579054', '#304250'] } style={ estilos.container }>
       <ScrollView>
         <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
           <HeaderComponent { ...props } iconeNome="arrow-back" nomeTitulo="Cadastro de Usuário" />
@@ -35,27 +35,27 @@ const Cadastro = props => {
           </View>
           <View style={ estilo.container }>
             <View style={ estilo.entries }>
-              <TextInput placeholder="nome da entidade" style={ estilo.input } />
+              <TextInput placeholder='nome da entidade' style={ estilo.input } />
             </View>
             <View style={ estilo.entries }>
-              <TextInput placeholder="e-mail" style={ estilo.input } />
+              <TextInput placeholder='e-mail' style={ estilo.input } />
             </View>
             <View style={ estilo.entries }>
-               <TextInput placeholder="login" style={ estilo.input } />
+               <TextInput placeholder='login' style={ estilo.input } />
              </View>
             <View style={ estilo.entries }>
-              <TextInput placeholder="senha" style={ estilo.input } />
+              <TextInput placeholder='senha' style={ estilo.input } />
             </View>
             <View style={ estilo.entries }>
-              <TextInput placeholder="endereço" style={ estilo.input } />
+              <TextInput placeholder='endereço' style={ estilo.input } />
             </View>
             <View style={ estilo.entries }>
-              <TextInput placeholder="telefone" style={ estilo.input } />
+              <TextInput placeholder='telefone' style={ estilo.input } />
             </View>
             <View style={ estilo.entries }>
-              <TextInput multiline placeholder="descrição da entidade" style={estilo.inputDesciption} />
+              <TextInput multiline placeholder='descrição da entidade' style={ estilo.inputDesciption } />
             </View>
-            <ButtonComponent onPress={ () => navigate('confirmaCadastro')} title="CONFIRMAR" />
+            <ButtonComponent onPress={ () => navigate('confirmaCadastro') } title="CONFIRMAR" />
           </View>
         </View>
       </ScrollView>

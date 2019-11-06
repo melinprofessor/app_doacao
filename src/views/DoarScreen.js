@@ -5,6 +5,7 @@ import StyleSheet, { estilos } from '../styles/styles';
 import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
 import ButtonIOSComponent from '../components/ButtonIOSComponent';
 import InputTextComponent from '../components/InputTextComponent';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export function navigationOptions({ navigate }) {
   return {
@@ -19,6 +20,10 @@ const ButtonComponent = Platform.select({
 })();
 
 const registrar = async entidadeObject => {
+
+  const getData = await AsyncStorage.getItem('entidade');
+  const entidadeDoadora = JSON.parse(getData);
+  entidadeObject.entidadeDoadora = entidadeDoadora._id;
 
   setVisible(true);
   const entidade = await CadastrarEntidade(entidadeObject).then((result) => {
@@ -45,7 +50,7 @@ const Doar = props => {
         ] }
       >
         <View style={ estilo.container }>
-          <InputTextComponent placeholder="Produto" setValue={ setProduto } value={produto} style={ [estilo.input] } />
+          <InputTextComponent placeholder="Produto" setValue={ setProduto } value={ produto } style={ [estilo.input] } />
           <View style={ { width: '100%', borderRadius: 20 } }>
             <InputTextComponent
               placeholder='Descrição'
@@ -64,13 +69,11 @@ const Doar = props => {
               onPressHandler={ async () => {
                 await registrar({
                   active : true,
-                  products : products: {
-                    produto: produto,
-                    descricao: descricao,
+                  products: {
+                    titulo: produto,
+                    detalhes: descricao
                   },
-                  entidade : 'entidade',
-                  mercadoria : mercadoria,
-                  updatedAt : updatedAt,
+                  entidadeDoadora : 'entidade',
                 });
               } }
               title='Cadastrar Doação'
