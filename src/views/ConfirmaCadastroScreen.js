@@ -31,8 +31,8 @@ const ConfirmaCadastro = (props) => {
             <Text style={estilo.fonte}>com Sucesso!</Text>
           </View>
         </View>
-        <View style={estilo.container}>
-          <ButtonComponent title='FAZER LOGIN' onPressHandler={() => navigate('login')} />
+        <View style={ estilo.container }>
+          <ButtonComponent title='FAZER LOGIN'  onPressHandler={ () => navigate('login')}/>
         </View>
         <View style={estilo.container}>
           <Text style={estilo.fonte2}>Confirme o e-mail recebido</Text>

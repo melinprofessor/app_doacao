@@ -35,6 +35,18 @@ axios.interceptors.response.use(async function (response) {
   return Promise.reject(error.response);
 });
 
+export const CadastrarEntidade = async(entity) => {
+  try {
+    console.log(entity)
+      const response = await axios.post('/registrar', entity);
+
+      const { data} = response;
+      return Promise.resolve(data);
+  } catch (error) {
+    console.log(error.data)
+      return Promise.reject(error.data);
+  }
+}
 
  export const Autenticar = async (email, password) => {
    try {
