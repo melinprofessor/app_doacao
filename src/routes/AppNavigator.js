@@ -11,12 +11,12 @@ import SolicitarScreen from '../views/SolicitarScreen';
 
 const createDrawer = createDrawerNavigator({
   menu: MenuPrincipalScreen,
+  solicitar: SolicitarScreen,
   doar: DoarScreen,
- 
+
 });
 
 const createStack = createStackNavigator({
-  solicitar: SolicitarScreen,  
   login: LoginScreen,
   cadastro: CadastroScreen,
   confirmaCadastro: ConfirmaCadastroScreen,
