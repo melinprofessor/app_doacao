@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, Platform } from 'react-native';
+import { ScrollView, Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, { estilos } from '../styles/styles';
 import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
 import ButtonIOSComponent from '../components/ButtonIOSComponent';
+import ListaComponent from '../components/ListaComponent';
+
 import HeaderComponent from '../components/HeaderComponent';
 
 export function navigationOptions({ navigate }) {
@@ -24,16 +26,9 @@ const Solicitar = (props) => (
     style={estilos.container}
   >
     <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Pegar Doação" />
-    <View style={[estilos.container, {justifyContent: 'center', alignItems: 'center'}]}>
-      <View style={{height: 200, width: '90%', backgroundColor: '#fff', borderRadius: 20}}>
-        <View style={[estilos.container, {padding: 15}]}>
-          <View style={{borderBottomWidth: 1.5, borderBottomColor: '#000'}}>
-            <Text style={{fontSize: 20}}>Produto</Text>
-          </View>
-        
-        </View>
-      </View>
-    </View>
+    <ScrollView>
+      <ListaComponent />     
+    </ScrollView>
   </LinearGradient>
 );
 
