@@ -9,6 +9,7 @@ import EsqueceuSenhaScreen from '../views/EsqueceuSenhaScreen';
 import DoarScreen from '../views/DoarScreen';
 import SolicitarScreen from '../views/SolicitarScreen';
 import EntidadesScreen from '../views/EntidadesScreen';
+import ConfirmaEmailScreen from '../views/ConfirmaEmailScreen';
 
 const createDrawer = createDrawerNavigator({
   menu: MenuPrincipalScreen,
@@ -19,10 +20,12 @@ const createDrawer = createDrawerNavigator({
 });
 
 const createStack = createStackNavigator({
+
   login: LoginScreen,
   cadastro: CadastroScreen,
   confirmaCadastro: ConfirmaCadastroScreen,
   esqueceuSenha: EsqueceuSenhaScreen,
+  confirmaEmail: ConfirmaEmailScreen,
   drawer: {
     screen: createDrawer,
     navigationOptions: {
