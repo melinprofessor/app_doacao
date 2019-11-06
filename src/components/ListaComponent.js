@@ -43,8 +43,6 @@ const listaItensMockup =
 ];
 const ListaComponent = (props) => {
 
-  const [listaItens, setlistaItens] = useState(listaItensMockup);
-  console.log(props.list)
 
 //   active: true
 // createdAt: "2019-10-27T07:06:41.740Z"
@@ -53,6 +51,8 @@ const ListaComponent = (props) => {
 // password: "$2b$08$o9TqAHMl3lBQx8siiLZiF./g2xFSsmqIj.GfXZ2KQH2nzMzvlbOfC"
 // __v: 0
 // _id: "5db542015f78f50017ce898f"
+
+  if (props.tipo === 'entidades') {
     return (
       <View>
         {props.list.map(item => (
@@ -66,6 +66,7 @@ const ListaComponent = (props) => {
         ))}
       </View>
     );
+  }
 }
 
 export default ListaComponent;

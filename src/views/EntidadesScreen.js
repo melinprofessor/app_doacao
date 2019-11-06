@@ -35,7 +35,7 @@ const Entidades = props => {
     <LinearGradient colors={['#3CB371', '#2E8B57', '#008000', '#228B22']} style={estilos.container}>
       <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Entidades Cadastradas" />
       <ScrollView>
-        <ListaComponent list={list} />
+        <ListaComponent list={list} tipo='entidades' />
       </ScrollView>
     </LinearGradient>
   );
