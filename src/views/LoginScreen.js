@@ -29,8 +29,8 @@ const ButtonComponent = Platform.select({
 const Login = props => {
   const { navigate } = props.navigation;
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('teste@teste.com');
+  const [password, setPassword] = useState('123*');
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState('');
 
@@ -44,7 +44,6 @@ const Login = props => {
       setError(false);
       navigate('drawer');
     }).catch(e => {
-      console.log(e.data)
       setError(e)
       setVisible(false);
       AlertComponent('Erro ao Entrar', e.data)

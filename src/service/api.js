@@ -45,6 +45,9 @@ axios.interceptors.response.use(async function (response) {
     });
 
      const { token, entidade } = response.data;
+     if(entidade) {
+      await AsyncStorage.setItem('entidade', JSON.parse(entidade));
+     }
      return Promise.resolve({
        token,
        entidade
