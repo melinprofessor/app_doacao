@@ -10,12 +10,15 @@ import DoarScreen from '../views/DoarScreen';
 import SolicitarScreen from '../views/SolicitarScreen';
 import EntidadesScreen from '../views/EntidadesScreen';
 import ConfirmaEmailScreen from '../views/ConfirmaEmailScreen';
+import InfoScreen from '../views/InfoScreen';
+
 
 const createDrawer = createDrawerNavigator({
   menu: MenuPrincipalScreen,
   solicitar: SolicitarScreen,
   doar: DoarScreen,
   entidades: EntidadesScreen,
+  info: InfoScreen,
 
 });
 
