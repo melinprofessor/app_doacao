@@ -36,6 +36,20 @@ axios.interceptors.response.use(async function (response) {
 });
 
 
+export const CadastrarDoacao = async(entity) => {
+  try {
+
+      const response = await axios.post('/doacao', entity);
+
+      console.log(response)
+      const { data} = response;
+      return Promise.resolve(data);
+  } catch (error) {
+    console.log(error.data)
+      return Promise.reject(error.data);
+  }
+}
+
  export const Autenticar = async (email, password) => {
    try {
 
@@ -46,14 +60,17 @@ axios.interceptors.response.use(async function (response) {
 
      const { token, entidade } = response.data;
 
+
       if(entidade) {
-        await AsyncStorage.setItem('entidade', JSON.parse(entidade));
+        await AsyncStorage.setItem('entidade', entidade._id);
+        console.log(entidade);
       }
      return Promise.resolve({
        token,
        entidade
      })
    } catch (error) {
+     console.log(error)
      return Promise.reject(error);
    }
  }

@@ -7,13 +7,18 @@ import CadastroScreen from '../views/CadastroScreen';
 import ConfirmaCadastroScreen from '../views/ConfirmaCadastroScreen';
 import EsqueceuSenhaScreen from '../views/EsqueceuSenhaScreen';
 import DoarScreen from '../views/DoarScreen';
+import SolicitarScreen from '../views/SolicitarScreen';
+import EntidadesScreen from '../views/EntidadesScreen';
 
 const createDrawer = createDrawerNavigator({
   menu: MenuPrincipalScreen,
-});
-
-const createStack = createStackNavigator({
   doar: DoarScreen,
+  entidades: EntidadesScreen,
+  solicitar: SolicitarScreen,
+
+});
+const createStack = createStackNavigator({
+
   login: LoginScreen,
   cadastro: CadastroScreen,
   confirmaCadastro: ConfirmaCadastroScreen,
