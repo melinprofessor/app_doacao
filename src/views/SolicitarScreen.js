@@ -15,11 +15,6 @@ export function navigationOptions({ navigate }) {
   };
 }
 
-const ButtonComponent = Platform.select({
-  ios: () => ButtonIOSComponent,
-  android: () => ButtonAndroidComponent,
-})();
-
 const Solicitar = (props) => (
   <LinearGradient
     colors={['#3CB371', '#2E8B57', '#008000', '#228B22']}
@@ -27,7 +22,7 @@ const Solicitar = (props) => (
   >
     <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Pegar Doação" />
     <ScrollView>
-      <ListaComponent />     
+      <ListaComponent />
     </ScrollView>
   </LinearGradient>
 );

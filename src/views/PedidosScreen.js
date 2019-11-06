@@ -11,7 +11,7 @@ import ButtonIOSComponent from '../components/ButtonIOSComponent';
 
 export function navigationOptions({ navigate }) {
   return {
-    title: 'Pedidos_Screen',
+    title: 'Pedidos Realizados',
     header: null,
   };
 }

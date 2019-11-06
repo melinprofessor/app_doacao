@@ -1,23 +1,28 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ItensComponentButton = props => {
   return (
-    <View style={ estilo.container }>
-      <View style={ estilo.detalhes }>
-        <Text style={ estilo.entidade }>{props.entidade}</Text>        
-        <Text style={ estilo.endereco }>{props.endereco}</Text>
-        <View style={ estilo.linha } />
-        <Text style={ estilo.descricao }>{props.descricao}</Text>
-        <View style={ estilo.linha } />
-        <View style={ estilo.telefone }>
-          <Icon color="#000" name='phone'  size={ 20 } />
-          <Text style={ estilo.telefoneText }>{props.telefone}</Text>
-        </View>        
-      </View>      
+    <View style={estilo.container}>
+      <View style={estilo.detalhes}>
+        <Text style={estilo.entidade}>{props.entidade}</Text>
+        <Text style={estilo.endereco}>{props.endereco}</Text>
+        <View style={estilo.linha} />
+        <Text style={estilo.descricao}>{props.descricao}</Text>
+        <View style={estilo.linha} />
+        <View style={estilo.buttonView}>
+          <View>
+            <Text style={estilo.input, estilo.viewTexto}>Entidade</Text>
+          </View>
+
+          <View style={estilo.viewData}>
+            <Text style={estilo.input, estilo.viewTexto}>Data</Text>
+          </View>
+        </View>
+      </View>
     </View>
-    
+
   );
 };
 
@@ -42,7 +47,7 @@ const estilo = StyleSheet.create({
   descricao: {
 
   },
-  telefone: {
+  linha: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
     alignItems: 'center',
@@ -50,9 +55,9 @@ const estilo = StyleSheet.create({
   telefoneText: {
     marginLeft: 5,
   },
-  linha: {
+  buttonView: {
     backgroundColor: '#000',
-    borderTopWidth: 1,    
+    borderTopWidth: 1,
     marginVertical: 5,
   },
 });

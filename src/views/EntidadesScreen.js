@@ -1,25 +1,45 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import StyleSheet, { estilos } from '../styles/styles';
+import StyleSheet, {estilos} from '../styles/styles';
 import HeaderComponent from '../components/HeaderComponent';
 import ListaComponent from '../components/ListaComponent';
+import {getEntidades} from '../service/api';
 
-export function navigationOptions({ navigate }) {
+export function navigationOptions({navigate}) {
   return {
     title: 'Entidades',
     header: null,
   };
 }
 
-const Entidades = props => (
-  <LinearGradient colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] } style={ estilos.container }>
-    <HeaderComponent { ...props } iconeNome="menu" nomeTitulo="Login" />
-    <ScrollView>
-      <ListaComponent />     
-    </ScrollView>
-  </LinearGradient>
-);
+
+const getAllEntidades = async(setList, setError) => {
+  await getEntidades().then((result) => {
+    console.log(result)
+    setList(result);
+  }).catch((e)=> {
+    setError(e);
+  });
+}
+const Entidades = props => {
+  const [list, setList] = useState([]);
+  const [error, setError] = useState('');
+
+
+  useEffect(() => {
+    getAllEntidades(setList, setError)
+  }, [])
+
+  return (
+    <LinearGradient colors={['#3CB371', '#2E8B57', '#008000', '#228B22']} style={estilos.container}>
+      <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Entidades Cadastradas" />
+      <ScrollView>
+        <ListaComponent list={list} />
+      </ScrollView>
+    </LinearGradient>
+  );
+}
 
 const estilo = StyleSheet.create({
   fonte: {
@@ -34,7 +54,7 @@ const estilo = StyleSheet.create({
   viewTexto: {
     borderLeftWidth: 10,
     borderLeftColor: '#fff',
-    paddingLeft: 20, 
+    paddingLeft: 20,
   },
   viewInput: {
     width: '95%',
@@ -45,7 +65,7 @@ const estilo = StyleSheet.create({
     width: '80%',
     height: 45,
   },
-  inputDesciption: {    
+  inputDesciption: {
     textAlignVertical: 'top',
     backgroundColor: '#fff',
     width: '80%',
