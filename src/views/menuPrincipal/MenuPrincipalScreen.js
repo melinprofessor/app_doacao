@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ImageBackground, Platform } from 'react-native';
+import { View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, { estilos } from '../../styles/styles';
 
