@@ -11,7 +11,7 @@ import {getDoacoes} from '../service/api';
 
 export function navigationOptions({navigate}) {
   return {
-    title: 'Solicitar',
+    title: 'Solicitar Doação',
     header: null,
   };
 }

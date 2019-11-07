@@ -62,6 +62,17 @@ export const CadastrarDoacao = async(entity) => {
   }
 }
 
+export const getDoacoes = async() => {
+  try {
+    const entidade_id = await AsyncStorage.getItem('entidade');
+    const response = await axios.get(`/doacao/getByIdEntidadeDoadora/${entidade_id}`);
+    const {data} = response;
+    return Promise.resolve(data);
+  } catch (error) {
+    return Promise.reject(error.data);
+  }
+}
+
 export const getEntidades = async() => {
   try {
     const response = await axios.get('/entidade');
@@ -75,18 +86,38 @@ export const getEntidades = async() => {
   }
 }
 
-export const getDoacoes = async() => {
+export const getDoacoesByIdDoadora = async() => {
   try {
-    const response = await axios.get('/doacao');
+    const entidade_id = await AsyncStorage.getItem('entidade');
+    // console.log("teste aqui:");
+    // console.log(entidade_id);
+    const response = await axios.get('/doacaoByIdDoadora/'+entidade_id);
     const {data} = response;
-
-    console.log(response)
+    // console.log(data)
+    //console.log(response)
     return Promise.resolve(data);
   } catch (error) {
     console.log(error)
     return Promise.reject(error.data);
   }
 }
+
+export const getDoacoesByIdReceptora = async() => {
+  try {
+    const entidade_id = await AsyncStorage.getItem('entidade');
+    // console.log("teste aqui:");
+    // console.log(entidade_id);
+    const response = await axios.get('/doacaoByIdReceptora/'+entidade_id);
+    const {data} = response;
+    // console.log(data)
+    //console.log(response)
+    return Promise.resolve(data);
+  } catch (error) {
+    console.log(error)
+    return Promise.reject(error.data);
+  }
+}
+
  export const Autenticar = async (email, password) => {
    try {
 

@@ -1,12 +1,10 @@
-import React from 'react';
-import {
-  View, Text, TextInput, Platform, Linking,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import HeaderComponent from '../components/HeaderComponent';
 import StyleSheet, { estilos } from '../styles/styles';
-import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
-import ButtonIOSComponent from '../components/ButtonIOSComponent';
-
+import ListaComponent from '../components/ListaComponent';
+import {getDoacoesByIdReceptora} from '../service/api';
 
 
 export function navigationOptions({ navigate }) {
@@ -16,73 +14,37 @@ export function navigationOptions({ navigate }) {
   };
 }
 
-
-const ButtonComponent = Platform.select({
-  ios: () => ButtonIOSComponent,
-  android: () => ButtonAndroidComponent,
-})();
-
-
-const Pedidos_Screen = (props) => (
-  <LinearGradient
-    colors={ ['#3CB371', '#2E8B57', '#008000', '#228B22'] }
-    style={ estilos.container }
-  >
+const getAllPedidos = async(setList, setError) => {
+  await getDoacoesByIdReceptora().then((result) => {
+    console.log(result)
+    setList(result);
+  }).catch((e)=> {
+    setError(e);
+  });
+}
 
 
-    <View style={ [estilos.container, { justifyContent: 'space-around' }] }>
-      <View style={ estilo.container }>
-        <Text style={ estilo.fonte }>Produtos pedidos</Text>
-
-        <View style={ estilo.viewInput }>
-
-          <View style={ [
-            estilo.viewInput, estilo.viewTexto,
-            { backgroundColor: '#fff', borderRadius: 0,
-            },
-          ] }
-            >
-            <View style={ { borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%' } }>
-              <Text style={ estilo.input, estilo.viewTexto } >Produto</Text>
-            </View>
-
-            <View style={ { borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%', paddingBottom: 50 } }>
-              <Text style={ estilo.input, estilo.viewTexto }>Descrição</Text>
-            </View>
-
-            <View style={ { flexDirection: 'row' } }>
-              <View>
-                <Text style={ estilo.input, estilo.viewTexto }>Entidade</Text>
-              </View>
-
-              <View style={ estilo.viewData }>
-                <Text style={ estilo.input, estilo.viewTexto }>Data</Text>
-              </View>
-
-            </View>
+const Pedidos_Screen = (props) => {
+  const [list, setList] = useState([]);
+  const [error, setError] = useState('');
 
 
-          </View>
+  useEffect(() => {
+    getAllPedidos(setList, setError)
+  }, [])
 
-
-        </View>
-
-      </View>
-
-
-      <View style={ estilo.container }>
-        <View
-          style={ [
-            estilo.viewInput,
-            { backgroundColor: '#fff' },
-          ] }
-          />
-
-      </View>
-
-    </View>
-  </LinearGradient>
-);
+  return (
+    <LinearGradient
+      colors={["#3CB371", "#2E8B57", "#008000", "#228B22"]}
+      style={estilos.container}
+    >
+      <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Pedidos" />
+      <ScrollView>
+        <ListaComponent list={list} tipo="pedidos" />
+      </ScrollView>
+    </LinearGradient>
+  );
+};
 
 const PedidosScreen = {
   screen: Pedidos_Screen,
@@ -137,7 +99,4 @@ const estilo = StyleSheet.create({
 
 });
 
-
 export default PedidosScreen;
-
-
