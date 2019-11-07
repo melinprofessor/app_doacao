@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import HeaderComponent from '../components/HeaderComponent';
 import StyleSheet, { estilos } from '../styles/styles';
 import ListaComponent from '../components/ListaComponent';
-
+import {getDoacoesByIdReceptora} from '../service/api';
 
 
 export function navigationOptions({ navigate }) {
@@ -15,38 +15,12 @@ export function navigationOptions({ navigate }) {
 }
 
 const getAllPedidos = async(setList, setError) => {
-  // await getPedidos().then((result) => {
-  //   console.log(result)
-  //   setList(result);
-  // }).catch((e)=> {
-  //   setError(e);
-  // });
-
-  let listaItens= [
-    {
-      products: {
-        titulo: 'produto1',
-        detalhes: 'descricao1'
-      },
-      entidadeReceptora: {name: 'entidade1'},
-      createdAt: '06/11/2019',
-      contact: 'telefone1',
-      _id: 'key1',
-    },
-    {
-      products: {
-        titulo: 'produto2',
-        detalhes: 'descricao2'
-      },
-      entidadeReceptora: {name: 'entidade2'},
-      createdAt: '07/11/2019',
-      contact: 'telefone2',
-      _id: 'key2',
-    }
-  ];
-
-  setList(listaItens);
-
+  await getDoacoesByIdReceptora().then((result) => {
+    console.log(result)
+    setList(result);
+  }).catch((e)=> {
+    setError(e);
+  });
 }
 
 

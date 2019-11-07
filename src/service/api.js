@@ -74,6 +74,39 @@ export const getEntidades = async() => {
     return Promise.reject(error.data);
   }
 }
+
+export const getDoacoesByIdDoadora = async() => {
+  try {
+    const entidade_id = await AsyncStorage.getItem('entidade');
+    // console.log("teste aqui:");
+    // console.log(entidade_id);
+    const response = await axios.get('/doacaoByIdDoadora/'+entidade_id);
+    const {data} = response;
+    // console.log(data)
+    //console.log(response)
+    return Promise.resolve(data);
+  } catch (error) {
+    console.log(error)
+    return Promise.reject(error.data);
+  }
+}
+
+export const getDoacoesByIdReceptora = async() => {
+  try {
+    const entidade_id = await AsyncStorage.getItem('entidade');
+    // console.log("teste aqui:");
+    // console.log(entidade_id);
+    const response = await axios.get('/doacaoByIdReceptora/'+entidade_id);
+    const {data} = response;
+    // console.log(data)
+    //console.log(response)
+    return Promise.resolve(data);
+  } catch (error) {
+    console.log(error)
+    return Promise.reject(error.data);
+  }
+}
+
  export const Autenticar = async (email, password) => {
    try {
 

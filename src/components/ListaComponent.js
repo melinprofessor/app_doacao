@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import ItensComponent from './ItensComponent';
 import ItensPedidosComponent from './ItensPedidosComponent';
+import ItensDoadosComponent from './ItensDoadosComponent';
 
 const listaItensMockup =
 [
@@ -76,7 +77,23 @@ const ListaComponent = (props) => {
           <ItensPedidosComponent
             createdAt={item.createdAt}
             descricao={item.products.detalhes}
-            entidade={item.entidadeReceptora.name}
+            entidade={'não sei'}//{item.entidadeDoadora.name}
+            key={item._id}
+            produto={item.products.titulo}
+          />
+        ))}
+      </View>
+    );
+  }
+
+  if (props.tipo === 'doados') {
+    return (
+      <View>
+        {props.list.map(item => (
+          <ItensPedidosComponent
+            createdAt={item.createdAt}
+            descricao={item.products.detalhes}
+            entidade={'não sei'}//{item.entidadeReceptora.name}
             key={item._id}
             produto={item.products.titulo}
           />
