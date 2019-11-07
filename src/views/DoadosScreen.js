@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, {estilos} from '../styles/styles';
 import HeaderComponent from '../components/HeaderComponent';
 import ListaComponent from '../components/ListaComponent';
+import LoaderComponent from '../components/LoaderComponent';
 import {getDoacoesByIdDoadora} from '../service/api';
 
 export function navigationOptions({navigate}) {
@@ -14,19 +15,22 @@ export function navigationOptions({navigate}) {
 }
 
 
-const getAllDoados = async(setList, setError) => {
-  await getDoacoesByIdDoadora().then((result) => {
-    setList(result);
-  }).catch((e)=> {
-    setError(e);
-  });
 
-
-}
 const Doados = props => {
   const [list, setList] = useState([]);
   const [error, setError] = useState('');
+  const [visible, setVisible] = useState(false);
 
+  const getAllDoados = async(setList, setError) => {
+    setVisible(true);
+    await getDoacoesByIdDoadora().then((result) => {
+      setList(result);
+      setVisible(false);
+    }).catch((e)=> {
+      setError(e);
+      setVisible(false);
+    });
+  }
 
   useEffect(() => {
     getAllDoados(setList, setError)
@@ -34,6 +38,7 @@ const Doados = props => {
 
   return (
     <LinearGradient colors={['#3CB371', '#2E8B57', '#008000', '#228B22']} style={estilos.container}>
+      {visible && <LoaderComponent visible={visible} />}
       <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Produtos doados" />
       <ScrollView>
         <ListaComponent list={list} tipo='doados' />

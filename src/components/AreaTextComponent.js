@@ -6,6 +6,8 @@ const AreaTextComponent = (props) => (
     <TextInput
       autoCapitalize='none'
       autoCorrect={false}
+      multiline
+      numberOfLines={6}
       onChangeText={(text) => props.setValue(text)}
       placeholder={props.placeholder}
       style={estilo.input}
@@ -25,8 +27,8 @@ const estilo = StyleSheet.create({
   input: {
     backgroundColor: '#fff',
     width: '80%',
-    height: 150, 
-    textAlignVertical: 'top' 
+    height: 150,
+    textAlignVertical: 'top'
   },
 });
 

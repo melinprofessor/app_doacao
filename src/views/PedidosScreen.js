@@ -2,32 +2,36 @@ import React, {useState, useEffect} from 'react';
 import {ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import HeaderComponent from '../components/HeaderComponent';
-import StyleSheet, { estilos } from '../styles/styles';
+import StyleSheet, {estilos} from '../styles/styles';
 import ListaComponent from '../components/ListaComponent';
 import {getDoacoesByIdReceptora} from '../service/api';
+import LoaderComponent from '../components/LoaderComponent';
 
 
-export function navigationOptions({ navigate }) {
+export function navigationOptions({navigate}) {
   return {
     title: 'Pedidos Realizados',
     header: null,
   };
 }
 
-const getAllPedidos = async(setList, setError) => {
-  await getDoacoesByIdReceptora().then((result) => {
-    console.log(result)
-    setList(result);
-  }).catch((e)=> {
-    setError(e);
-  });
-}
-
 
 const Pedidos_Screen = (props) => {
   const [list, setList] = useState([]);
   const [error, setError] = useState('');
+  const [visible, setVisible] = useState(false);
 
+  const getAllPedidos = async(setList, setError) => {
+    setVisible(true);
+    await getDoacoesByIdReceptora().then((result) => {
+      console.log(result)
+      setList(result);
+      setVisible(false);
+    }).catch((e)=> {
+      setError(e);
+      setVisible(false);
+    });
+  }
 
   useEffect(() => {
     getAllPedidos(setList, setError)
@@ -35,9 +39,11 @@ const Pedidos_Screen = (props) => {
 
   return (
     <LinearGradient
-      colors={["#3CB371", "#2E8B57", "#008000", "#228B22"]}
+      colors={['#3CB371', '#2E8B57', '#008000', '#228B22']}
       style={estilos.container}
     >
+      {visible && <LoaderComponent visible={visible} />}
+
       <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Pedidos" />
       <ScrollView>
         <ListaComponent list={list} tipo="pedidos" />

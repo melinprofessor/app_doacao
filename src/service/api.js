@@ -62,6 +62,20 @@ export const CadastrarDoacao = async(entity) => {
   }
 }
 
+export const total = async() => {
+  try {
+    const entidade_id = await AsyncStorage.getItem('entidade');
+      const response = await axios.get(`/doacao/informations/${entidade_id}`);
+
+      console.log(response)
+      const {data} = response;
+      return Promise.resolve(data);
+  } catch (error) {
+    console.log(error.data)
+      return Promise.reject(error.data);
+  }
+}
+
 export const getDoacoes = async() => {
   try {
     const entidade_id = await AsyncStorage.getItem('entidade');
