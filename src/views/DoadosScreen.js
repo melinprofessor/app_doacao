@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import StyleSheet, {estilos} from '../styles/styles';
 import HeaderComponent from '../components/HeaderComponent';
 import ListaComponent from '../components/ListaComponent';
-import {getEntidades} from '../service/api';
+import {getDoacoesByIdDoadora} from '../service/api';
 
 export function navigationOptions({navigate}) {
   return {
@@ -15,12 +15,13 @@ export function navigationOptions({navigate}) {
 
 
 const getAllDoados = async(setList, setError) => {
-  // await getDoados().then((result) => {
-  //   console.log(result)
-  //   setList(result);
-  // }).catch((e)=> {
-  //   setError(e);
-  // });
+  await getDoacoesByIdDoadora().then((result) => {
+    console.log('aqui estou:')
+    console.log(result)
+    setList(result);
+  }).catch((e)=> {
+    setError(e);
+  });
 
   var listaItens= [
     {
@@ -45,7 +46,7 @@ const getAllDoados = async(setList, setError) => {
     }
   ];
 
-setList(listaItens);
+//setList(listaItens);
 
 }
 const Doados = props => {
