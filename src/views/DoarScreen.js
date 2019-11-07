@@ -9,6 +9,7 @@ import HeaderComponent from '../components/HeaderComponent';
 import InputTextComponent from '../components/InputTextComponent';
 import AreaTextComponent from '../components/AreaTextComponent';
 import { CadastrarDoacao } from '../service/api';
+import AlertComponent from '../components/AlertComponent';
 
 export function navigationOptions({ navigate }) {
   return {
@@ -23,6 +24,7 @@ const ButtonComponent = Platform.select({
 })();
 
 
+
 const Doar = props => {
   const {navigate} = props.navigation;
   const [produto, setProduto] = useState("");
@@ -30,21 +32,40 @@ const Doar = props => {
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState('');
 
+  const LimpaTela = () =>{
+    setProduto('');
+    setDescricao('');
+  }
+
+  const Close = () =>{
+    setProduto('');
+    setDescricao('');
+    navigate('menu')
+  }
+
   const registrar = async entidadeObject => {
+    if (produto === '' || descricao === '') {
+      AlertComponent('Erro ao Cadastrar', 'Os campos devem ser preenchidos');
+    } else {
+      const entidadeDoadora = await AsyncStorage.getItem('entidade');
+      entidadeObject.entidadeDoadora = entidadeDoadora;
 
+      setVisible(true);
+      const entidade = await CadastrarDoacao(entidadeObject)
+        .then(result => {
+          setVisible(false);
+          AlertComponent('Cadastrado com sucesso!',
+           'Deseja cadastrar outra doação?',
+           [{text: 'Sim', onPress: () => LimpaTela()},
+            {text: 'Não', onPress: () => Close()} ]);
 
-    const entidadeDoadora = await AsyncStorage.getItem('entidade');
-    entidadeObject.entidadeDoadora = entidadeDoadora;
-
-    setVisible(true);
-    const entidade = await CadastrarDoacao(entidadeObject).then((result) => {
-      setVisible(false);
-      navigate('confirmaCadastro')
-    }).catch((error) => {
-      setVisible(false);
-      AlertComponent('Erro ao Cadastrar', error)
-    })
-    console.log(entidade)
+        })
+        .catch(error => {
+          setVisible(false);
+          AlertComponent('Erro ao Cadastrar', error);
+        });
+      console.log(entidade);
+    }
   };
 
   return (
