@@ -1,133 +1,92 @@
-import React from 'react';
-import {
-  View, Text, TextInput, Platform, Linking,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import StyleSheet, { estilos } from '../styles/styles';
-import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
-import ButtonIOSComponent from '../components/ButtonIOSComponent';
+import StyleSheet, {estilos} from '../styles/styles';
+import HeaderComponent from '../components/HeaderComponent';
+import ListaComponent from '../components/ListaComponent';
+import {getDoacoesByIdDoadora} from '../service/api';
 
-
-export function navigationOptions({ navigate }) {
+export function navigationOptions({navigate}) {
   return {
-    title: 'Doados_Screen',
+    title: 'Doações Realizadas',
     header: null,
   };
 }
 
 
-const ButtonComponent = Platform.select({
-  ios: () => ButtonIOSComponent,
-  android: () => ButtonAndroidComponent,
-})();
+const getAllDoados = async(setList, setError) => {
+  await getDoacoesByIdDoadora().then((result) => {
+    setList(result);
+  }).catch((e)=> {
+    setError(e);
+  });
 
 
-const Doados_Screen = (props) => (
-  <LinearGradient
-    colors={['#3CB371', '#2E8B57', '#008000', '#228B22']}
-    style={estilos.container}
-  >
+}
+const Doados = props => {
+  const [list, setList] = useState([]);
+  const [error, setError] = useState('');
 
 
-    <View style={[estilos.container, { justifyContent: 'space-around' }]}>
-      <View style={estilo.container}>
-        <Text style={estilo.fonte}>Produtos doados</Text>
-        <View style={estilo.viewInput}>
+  useEffect(() => {
+    getAllDoados(setList, setError)
+  }, [])
 
-          <View style={[
-            estilo.viewInput, estilo.viewTexto,
-            {
-              backgroundColor: '#fff', borderRadius: 0,
-            },
-          ]}
-          >
-            <View style={{ borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%' }}>
-              <Text style={estilo.input, estilo.viewTexto}>Produto</Text>
-            </View>
-            <View style={{ borderBottomColor: '#000', borderBottomWidth: 1.5, width: '100%', paddingBottom: 50 }}>
-              <Text style={estilo.input, estilo.viewTexto}>Descrição</Text>
-            </View>
-            <View style={{ flexDirection: 'row' }}>
-              <View>
-                <Text style={estilo.input, estilo.viewTexto}>Entidade</Text>
-              </View>
-              <View style={estilo.viewData}>
-                <Text style={estilo.input, estilo.viewTexto}>Data</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-
-
-      <View style={estilo.container}>
-        <View
-          style={[
-            estilo.viewInput,
-            { backgroundColor: '#fff' },
-          ]}
-        />
-
-      </View>
-
-    </View>
-  </LinearGradient>
-);
-
-const DoadosScreen = {
-  screen: Doados_Screen,
-  navigationOptions,
-};
+  return (
+    <LinearGradient colors={['#3CB371', '#2E8B57', '#008000', '#228B22']} style={estilos.container}>
+      <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Produtos doados" />
+      <ScrollView>
+        <ListaComponent list={list} tipo='doados' />
+      </ScrollView>
+    </LinearGradient>
+  );
+}
 
 const estilo = StyleSheet.create({
   fonte: {
     color: '#fff',
     fontSize: 35,
-    paddingTop: 100,
-    paddingBottom: 50,
   },
   container: {
+    marginVertical: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   viewTexto: {
     borderLeftWidth: 10,
     borderLeftColor: '#fff',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    padding: 15,
-    alignItems: 'flex-start',
-
-
+    paddingLeft: 20,
   },
-
   viewInput: {
-    width: '90%',
-
+    width: '95%',
     alignItems: 'center',
   },
-
   input: {
     backgroundColor: '#fff',
     width: '80%',
     height: 45,
-    padding: 10,
-
-
+  },
+  inputDesciption: {
+    textAlignVertical: 'top',
+    backgroundColor: '#fff',
+    width: '80%',
+    height: 90,
   },
   colorButton: {
     backgroundColor: '#fff',
   },
-
-  viewData: {
-    marginLeft: 100,
-  }
-
+  entries: {
+    width: '95%',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    marginBottom: 15,
+  },
 });
 
+const DoadosScreen = {
+  screen: Doados,
+  navigationOptions,
+};
 
 export default DoadosScreen;
-
-

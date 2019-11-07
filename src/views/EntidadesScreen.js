@@ -8,7 +8,7 @@ import {getEntidades} from '../service/api';
 
 export function navigationOptions({navigate}) {
   return {
-    title: 'Entidades',
+    title: 'Entidades Cadastradas',
     header: null,
   };
 }
