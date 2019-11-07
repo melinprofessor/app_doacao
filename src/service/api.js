@@ -74,6 +74,19 @@ export const getEntidades = async() => {
     return Promise.reject(error.data);
   }
 }
+
+export const getDoacoes = async() => {
+  try {
+    const response = await axios.get('/doacao');
+    const {data} = response;
+
+    console.log(response)
+    return Promise.resolve(data);
+  } catch (error) {
+    console.log(error)
+    return Promise.reject(error.data);
+  }
+}
  export const Autenticar = async (email, password) => {
    try {
 

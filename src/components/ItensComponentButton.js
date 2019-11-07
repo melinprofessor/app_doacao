@@ -1,23 +1,30 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ItensComponentButton = props => {
   return (
     <View style={estilo.container}>
       <View style={estilo.detalhes}>
-        <Text style={estilo.entidade}>{props.entidade}</Text>
-        <Text style={estilo.endereco}>{props.endereco}</Text>
-        <View style={estilo.linha} />
-        <Text style={estilo.descricao}>{props.descricao}</Text>
-        <View style={estilo.linha} />
-        <View style={estilo.buttonView}>
-          <View>
-            <Text style={estilo.input, estilo.viewTexto}>Entidade</Text>
-          </View>
+        <Text style={{fontWeight: 'bold'}}>Produto</Text>
+        <Text style={estilo.entidade}>{props.item.products.titulo}</Text>
 
-          <View style={estilo.viewData}>
-            <Text style={estilo.input, estilo.viewTexto}>Data</Text>
+        <View style={[estilo.linha]} />
+        <View style={{height: 120}}>
+          <Text style={{fontWeight: 'bold'}}>Detalhes do Produto</Text>
+          <Text style={estilo.descricao}>{props.item.products.detalhes}</Text>
+        </View>
+        <View style={estilo.linha} />
+        <View style={estilo.telefone}>
+          <View>
+            <Text style={{fontWeight: 'bold'}}>Entidade</Text>
+            <Text>{props.item.entidadeDoadora && props.item.entidadeDoadora.name || 'NDA'}</Text>
+          </View>
+          <View style={{width:150}}>
+            <TouchableOpacity style={{backgroundColor: '#2E8B57',borderWidth:1, borderRadius:5, alignItems:'center'}}>
+              <Text style={{color: '#fff', fontSize: 25, textAlign: 'center', fontWeight: 'bold'}}>Solicitar</Text>
+              <Icon color="#fff" name='redeem' size={30} />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -47,15 +54,15 @@ const estilo = StyleSheet.create({
   descricao: {
 
   },
-  linha: {
+  telefone: {
     flexDirection: 'row',
-    alignSelf: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   telefoneText: {
     marginLeft: 5,
   },
-  buttonView: {
+  linha: {
     backgroundColor: '#000',
     borderTopWidth: 1,
     marginVertical: 5,

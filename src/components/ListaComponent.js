@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import ItensComponent from './ItensComponent';
+import ItensComponentButton from './ItensComponentButton';
 
 const listaItensMockup =
 [
@@ -44,13 +45,16 @@ const listaItensMockup =
 const ListaComponent = (props) => {
 
 
-//   active: true
-// createdAt: "2019-10-27T07:06:41.740Z"
-// email: "tested@teste.com"
-// name: "teste"
-// password: "$2b$08$o9TqAHMl3lBQx8siiLZiF./g2xFSsmqIj.GfXZ2KQH2nzMzvlbOfC"
-// __v: 0
-// _id: "5db542015f78f50017ce898f"
+  // active: true
+  // createdAt: "2019-11-06T23:02:15.006Z"
+  // entidadeDoadora:
+  // active: true
+  // name: "TESTE"
+  // _id: "5dc34eb07719fc0017851148"
+  // __proto__: Object
+  // products: {titulo: "sdasda", detalhes: "asdasda"}
+  // __v: 0
+  // _id: "5dc350f729a23e001791d2c8"
 
   if (props.tipo === 'entidades') {
     return (
@@ -62,6 +66,17 @@ const ListaComponent = (props) => {
             entidade={item.name}
             key={item._id}
             telefone={item.contact}
+          />
+        ))}
+      </View>
+    );
+  } else if(props.tipo==='solicitar') {
+    return (
+      <View>
+        {props.list.map(item => (
+          <ItensComponentButton
+            item={item}
+            key={item._id}
           />
         ))}
       </View>
