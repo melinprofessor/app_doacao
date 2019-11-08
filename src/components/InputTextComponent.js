@@ -3,6 +3,7 @@ import {StyleSheet, View, TextInput} from 'react-native';
 
 const InputTextComponent = (props) => (
   <View style={estilo.viewContainer}>
+
     <TextInput
       autoCapitalize='none'
       autoCorrect={false}

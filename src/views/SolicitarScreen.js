@@ -5,6 +5,7 @@ import StyleSheet, {estilos} from '../styles/styles';
 import ButtonAndroidComponent from '../components/ButtonAndroidComponent';
 import ButtonIOSComponent from '../components/ButtonIOSComponent';
 import ListaComponent from '../components/ListaComponent';
+import LoaderComponent from '../components/LoaderComponent';
 
 import HeaderComponent from '../components/HeaderComponent';
 import {getDoacoes} from '../service/api';
@@ -16,18 +17,23 @@ export function navigationOptions({navigate}) {
   };
 }
 
-const getAllDoacoes = async(setDoacao, setError) => {
-  await getDoacoes().then((result) => {
-    console.log(result)
-    setDoacao(result);
-  }).catch((e)=> {
-    setError(e);
-  });
-}
+
 
 const Solicitar = (props) => {
   const [daocao, setDoacao] = useState([]);
   const [error, setError] = useState('');
+  const [visible, setVisible] = useState(false);
+
+  const getAllDoacoes = async(setDoacao, setError) => {
+    setVisible(true);
+    await getDoacoes().then((result) => {
+     setVisible(false);
+      setDoacao(result);
+    }).catch((e)=> {
+      setError(e);
+      setVisible(false);
+    });
+  }
 
   useEffect(() => {
     getAllDoacoes(setDoacao, setError);
@@ -39,6 +45,7 @@ const Solicitar = (props) => {
       colors={['#3CB371', '#2E8B57', '#008000', '#228B22']}
       style={estilos.container}
     >
+      {visible && <LoaderComponent visible={visible} />}
       <HeaderComponent {...props} iconeNome="arrow-back" nomeTitulo="Pegar Doação" />
       <ScrollView>
         <ListaComponent list={daocao} tipo='solicitar' />
